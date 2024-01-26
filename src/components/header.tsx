@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, SyntheticEvent } from "react";
 import { BiUserCircle } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { VscColorMode } from "react-icons/vsc";
 
 interface HeaderProps {
@@ -9,6 +9,45 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleTheme, theme }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  const submit = async (e: SyntheticEvent) => {
+    e.preventDefault();
+
+    await fetch("http://localhost:8000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
+        email,
+        password
+      })
+    });
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/user", {
+          headers: { "Content-Type": "application/json" },
+          credentials: 'include',
+        });
+        
+        const content = await response.json();
+
+        setName(content.name);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+    }, []);
+  
+
+
   const headerImageSrc =
     theme === "dark" ? "/generlate-dark.webp" : "/generlate-light.webp";
 
@@ -55,19 +94,27 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, theme }) => {
           <BiUserCircle title="user options" />
         </button>
 
-        <div className="dropdown-menu">
+        <form className="dropdown-menu" onSubmit={submit}>
           <p title="profile">Log in</p>
-          <input type="text" placeholder="username"></input>
+          <input type="email" placeholder="Email address" required 
+              onChange={e => setEmail(e.target.value)}
+          />
 
-          <input type="text" placeholder="password"></input>
+          <input type="password" placeholder="Password" required 
+              onChange={e => setPassword(e.target.value)}
+          />
 
-          <a href="../pages/sign-up" title="profile">
+          <a href="../components/Register" title="profile">
             Sign up
           </a>
+          <button type="submit">Submit</button>
           <button className="link" onClick={toggleTheme} title="colors">
             <VscColorMode />
             <p>theme</p>
           </button>
+        </form>
+        <div>
+          {name ? 'Hi ' + name : 'You are not logged in'}
         </div>
       </div>
     </header>

@@ -8,10 +8,13 @@ import Finances from "./components/Finances";
 import Legal from "./components/Legal";
 import News from "./components/News";
 import Pricing from "./components/Pricing";
+import Register from "./components/Register";
 import Team from "./components/Team";
 import React, { useState, createContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+
+
 
 export const ThemeContext = createContext({});
 
@@ -106,6 +109,7 @@ const useTheme = () => {
 function App() {
   const { theme, toggleTheme } = useTheme();
 
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme } }>
       <div className={`app ${theme}`}>
@@ -128,6 +132,7 @@ function App() {
             <Route path="/components/Legal" element={<Legal />} />
             <Route path="/components/News" element={<News />} />
             <Route path="/components/Pricing" element={<Pricing />} />
+            <Route path="/components/Register" element={<Register />} />
             <Route path="/components/Team" element={<Team />} />
           </Routes>
         </AnimatePresence>
