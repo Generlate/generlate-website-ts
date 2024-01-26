@@ -138,25 +138,22 @@ function App() {
 
 export default App;
 
-//TODO: fix footer not aligning with page bottom
+//TODO: add visitor tally / google analytics
 //TODO: make all pages work on ipad and mobile (normal browser, not app view)
+//TODO: add Auth0 logins / user login and profiles (jwt auth)
 //TODO: build a django backend
+//TODO: make user profiles work
+//TODO: add user_input history
 //TODO: add Next.js
 //TODO: add styleX
-//TODO: host django on azure server (maybe time to check out aws)
-//TODO: add Auth0 logins / user login and profiles
-//TODO: set up azure CI/CD to get local updates quickly to the server
-//TODO: add sphere with flat bottom to canvas scenes so objects can cast shadow and xyz indicator
 //TODO: better background gradient
-//TODO: generlate page input text is being added horizontally instead of vertically
-//TODO: add titles to footer buttons
 //TODO: add up arrows on footer buttons on desktop
 //TODO: maybe move header inside pages and turn background color invisible on generlate page. keep header width inside the 50%. remove color from canvas. (might need to figure out with home page canvases)
-//TODO: add history
-//TODO: add visitor tally / google analytics
-//TODO: make user profiles work
+//TODO: fix arrow icons not working on meta quest browser
+//TODO: host django on azure server (maybe time to check out aws)
+//TODO: set up azure CI/CD to get local updates quickly to the server
+//TODO: add sphere with flat bottom to canvas scenes so objects can cast shadow and xyz indicator
 //TODO: polish
-//TODO: add typescript
 //TODO: add search bar, add search bar functionality
 //TODO: make the 'text to 3d' button have that glossy blurred look
 //TODO: refine sub pages

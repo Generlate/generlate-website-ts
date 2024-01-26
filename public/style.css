@@ -901,25 +901,25 @@ header {
   }
 
   .api {
-    height: calc(100vh - 126px);
+    height: calc(100vh - 107px);
     margin-left: 25%;
     margin-right: 25%;
   }
 
   .austencabret {
-    height: calc(100vh - 126px);
+    height: calc(100vh - 107px);
     margin-left: 25%;
     margin-right: 25%;
   }
 
   .contacts {
-    height: calc(100vh - 126px);
+    height: calc(100vh - 107px);
     margin-left: 25%;
     margin-right: 25%;
   }
 
   .docs {
-    height: calc(100vh - 126px);
+    height: calc(100vh - 107px);
     margin-left: 25%;
     margin-right: 25%;
   }
@@ -1094,7 +1094,7 @@ header {
   }
 
   .finances {
-    height: calc(100vh - 126px);
+    height: calc(100vh - 107px);
     margin-left: 25%;
     margin-right: 25%;
   }
@@ -1105,19 +1105,19 @@ header {
   }
 
   .news {
-    height: calc(100vh - 126px);
+    height: calc(100vh - 107px);
     margin-left: 25%;
     margin-right: 25%;
   }
 
   .pricing {
-    height: calc(100vh - 126px);
+    height: calc(100vh - 107px);
     margin-left: 25%;
     margin-right: 25%;
   }
 
   .team {
-    height: calc(100vh - 126px);
+    height: calc(100vh - 107px);
     margin-left: 25%;
     margin-right: 25%;
   }
