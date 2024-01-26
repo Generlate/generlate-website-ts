@@ -138,7 +138,6 @@ function App() {
 
 export default App;
 
-//TODO: add visitor tally / google analytics
 //TODO: make all pages work on ipad and mobile (normal browser, not app view)
 //TODO: add Auth0 logins / user login and profiles (jwt auth)
 //TODO: build a django backend
@@ -149,6 +148,7 @@ export default App;
 //TODO: better background gradient
 //TODO: add up arrows on footer buttons on desktop
 //TODO: maybe move header inside pages and turn background color invisible on generlate page. keep header width inside the 50%. remove color from canvas. (might need to figure out with home page canvases)
+//TODO: change UI so that text input is on top of canvas and canvas is the entire page.
 //TODO: fix arrow icons not working on meta quest browser
 //TODO: host django on azure server (maybe time to check out aws)
 //TODO: set up azure CI/CD to get local updates quickly to the server
