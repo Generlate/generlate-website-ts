@@ -138,7 +138,6 @@ function App() {
 
 export default App;
 
-//TODO: make all pages work on ipad and mobile (normal browser, not app view)
 //TODO: add Auth0 logins / user login and profiles (jwt auth)
 //TODO: build a django backend
 //TODO: make user profiles work
@@ -152,6 +151,7 @@ export default App;
 //TODO: fix arrow icons not working on meta quest browser
 //TODO: host django on azure server (maybe time to check out aws)
 //TODO: set up azure CI/CD to get local updates quickly to the server
+//TODO: make all pages work on ipad and mobile (normal browser, not app view)
 //TODO: add sphere with flat bottom to canvas scenes so objects can cast shadow and xyz indicator
 //TODO: polish
 //TODO: add search bar, add search bar functionality
