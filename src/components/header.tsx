@@ -1,37 +1,19 @@
-import React, { useState, useEffect, SyntheticEvent } from "react";
-import { BiUserCircle } from "react-icons/bi";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { BiUserCircle } from "react-icons/bi";
 import { VscColorMode } from "react-icons/vsc";
 
-interface HeaderProps {
-  toggleTheme: () => void;
-  theme: string;
-}
 
-const Header: React.FC<HeaderProps> = ({ toggleTheme, theme }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Header = (props: { toggleTheme: () => void, theme:string , name: string, setName: (name: string) => void }) => {
+  
 
-  const submit = async (e: SyntheticEvent) => {
-    e.preventDefault();
-
-    await fetch("http://localhost:8000/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({
-        email,
-        password
-      })
-    });
-  }
 
 
   
 
 
   const headerImageSrc =
-    theme === "dark" ? "/generlate-dark.webp" : "/generlate-light.webp";
+    props.theme === "dark" ? "/generlate-dark.webp" : "/generlate-light.webp";
 
   const [activeDropdown, setActiveDropdown] = useState(null);
 
@@ -59,6 +41,39 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, theme }) => {
     };
   }, []);
 
+  const logout = async () => {
+    await fetch("http://localhost:8000/api/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: 'include',
+    });
+
+    props.setName('');
+  }
+
+  let menu; 
+
+  if(props.name === "") {
+    menu = (
+        <ul>
+          <li>
+            <Link to="/components/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/components/register">Register</Link>
+          </li>
+        </ul>
+    )
+  } else {
+    menu = (
+        <ul>
+          <li>
+            <Link to="/components/login" onClick={logout}>Logout</Link>
+          </li>
+        </ul>
+    )
+  }
+
   return (
     <header>
       <Link to="/components/About">
@@ -76,29 +91,35 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, theme }) => {
           <BiUserCircle title="user options" />
         </button>
 
-        <form className="dropdown-menu" onSubmit={submit}>
+        <form className="dropdown-menu">
           <a href="../components/Login">login</a>
           <p title="profile">Log in</p>
           <input type="email" placeholder="Email address" required 
-              onChange={e => setEmail(e.target.value)}
+              
           />
 
           <input type="password" placeholder="Password" required 
-              onChange={e => setPassword(e.target.value)}
+              
           />
 
           <a href="../components/Register" title="profile">
             Sign up
           </a>
           <button type="submit">Submit</button>
-          <button className="link" onClick={toggleTheme} title="colors">
+          <button className="link" onClick={props.toggleTheme} title="colors">
             <VscColorMode />
             <p>theme</p>
           </button>
         </form>
+        <div>
+          {menu}
+        </div>
+        <div>
+          {props.name ? 'Hi ' + props.name : 'You are not logged in'}
+        </div>
       </div>
     </header>
   );
-}
+};
 
 export default Header;

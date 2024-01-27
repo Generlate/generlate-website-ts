@@ -13,7 +13,7 @@ interface ThemeProps {
   theme: string;
 }
 
-function Home({ theme }: ThemeProps) {
+function About({ theme }: ThemeProps) {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ function Home({ theme }: ThemeProps) {
           ?
         </a>
         <div>
-          <Link to="/components/Home">Text -&gt; 3D!</Link>
+          <Link to="/">Text -&gt; 3D!</Link>
         </div>
         <section className="hidden">
           Meet Generlate, <br />a text to object generator. Your words - our
@@ -205,4 +205,4 @@ function Home({ theme }: ThemeProps) {
   );
 }
 
-export default transition(Home);
+export default transition(About);

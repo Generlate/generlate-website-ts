@@ -1,20 +1,19 @@
+import About from "./components/About";
 import Apis from "./components/Api";
 import AustenCabret from "./components/Austen-cabret";
 import Docs from "./components/Docs";
-import Home from "./components/home";
-import Header from "./components/header";
-import About from "./components/About";
 import Finances from "./components/Finances";
+import Header from "./components/header";
+import Home from "./components/home";
 import Legal from "./components/Legal";
 import Login from "./components/Login";
 import News from "./components/News";
 import Pricing from "./components/Pricing";
 import Register from "./components/Register";
 import Team from "./components/Team";
-import React, { useState, createContext } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
 
 
 
@@ -111,13 +110,12 @@ const useTheme = () => {
 
 
 function App() {
-
   const [name, setName] = useState('');
 
 
   useEffect(() => {
     (
-      async () => {
+        async () => {
           const response = await fetch("http://localhost:8000/api/user", {
             headers: { "Content-Type": "application/json" },
             credentials: 'include',
@@ -126,7 +124,7 @@ function App() {
           const content = await response.json();
 
           setName(content.name);
-    }
+        }
     )();
   });
 
@@ -136,24 +134,20 @@ function App() {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme } }>
       <div className={`app ${theme}`}>
-        <Header toggleTheme={toggleTheme} theme={theme}/>
+        <Header toggleTheme={toggleTheme} theme={theme} name={name} setName={setName}/>
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Home theme={theme} />} />
+            <Route path="/" element={<Home  name={name} setName={setName}/>} />
+            <Route path="/components/About" element={<About theme={theme} />} />
             <Route path="/components/Api" element={<Apis />} />
             <Route
               path="/components/Austen-cabret"
               element={<AustenCabret />}
             />
             <Route path="/components/Docs" element={<Docs />} />
-            <Route
-              path="/components/Home"
-              element={<Home theme={theme} />}
-            />
-            <Route path="/components/About" element={<About theme={theme} />} />
             <Route path="/components/Finances" element={<Finances />} />
             <Route path="/components/Legal" element={<Legal />} />
-            <Route path="/components/Login" element={<Login />} />
+            <Route path="/components/Login" element={<Login setName={setName}/>} />
             <Route path="/components/News" element={<News />} />
             <Route path="/components/Pricing" element={<Pricing />} />
             <Route path="/components/Register" element={<Register />} />
@@ -167,6 +161,10 @@ function App() {
 
 export default App;
 
+//TODO: rebuild the website, without generlate stuff and following scalable scripts' tutorial, to see if it's possible to remove 'props.setName('');' from Login.tsx
+//TODO: connect login/logout/register to their appropriate places.
+//TODO: style login/logout/register pages (if any of them are kept)
+//TODO: figure out user names (are they used?)
 //TODO: add Auth0 logins / user login and profiles (jwt auth)
 //TODO: build a django backend
 //TODO: make user profiles work

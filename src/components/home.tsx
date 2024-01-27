@@ -1,14 +1,11 @@
+import React, { useState } from "react";
 import { BiSolidMicrophoneAlt } from "react-icons/bi";
 import ThreeCanvas from "./ThreeCanvas";
-import React, { useState } from "react";
 import transition from "./transition";
-import { useEffect } from "react";
 
-interface ThemeProps {
-  theme: string;
-}
 
-const About: React.FC<ThemeProps> = ({ theme }) => {
+
+const Home = (props: { name: string, theme: string  }) => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
 
   function handleDownloadClick() {
@@ -74,13 +71,11 @@ const About: React.FC<ThemeProps> = ({ theme }) => {
           {showDownloadButton && (
             <>
               <button onClick={handleDownloadClick}>Download</button>
-              <ThreeCanvas modelPath="/box_4.obj" theme={theme} />
+              <ThreeCanvas modelPath="/box_4.obj" theme={props.theme} />
             </>
           )}
         </section>
-        {/* <div>
-          {name ? 'Hi ' + name : 'You are not logged in'}
-        </div> */}
+
         <section>
           <div></div>
 
@@ -104,4 +99,4 @@ const About: React.FC<ThemeProps> = ({ theme }) => {
   );
 };
 
-export default transition(About);
+export default transition(Home);
