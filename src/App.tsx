@@ -1,11 +1,12 @@
 import Apis from "./components/Api";
 import AustenCabret from "./components/Austen-cabret";
 import Docs from "./components/Docs";
-import Generlate from "./components/home";
+import Home from "./components/home";
 import Header from "./components/header";
-import Home from "./components/About";
+import About from "./components/About";
 import Finances from "./components/Finances";
 import Legal from "./components/Legal";
+import Login from "./components/Login";
 import News from "./components/News";
 import Pricing from "./components/Pricing";
 import Register from "./components/Register";
@@ -13,6 +14,7 @@ import Team from "./components/Team";
 import React, { useState, createContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
 
 
 
@@ -106,17 +108,38 @@ const useTheme = () => {
   return { theme, toggleTheme };
 };
 
+
+
 function App() {
+
+  const [name, setName] = useState('');
+
+
+  useEffect(() => {
+    (
+      async () => {
+          const response = await fetch("http://localhost:8000/api/user", {
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include',
+          });
+
+          const content = await response.json();
+
+          setName(content.name);
+    }
+    )();
+  });
+
   const { theme, toggleTheme } = useTheme();
 
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme } }>
       <div className={`app ${theme}`}>
-        <Header toggleTheme={toggleTheme} theme={theme} />
+        <Header toggleTheme={toggleTheme} theme={theme}/>
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Generlate theme={theme} />} />
+            <Route path="/" element={<Home theme={theme} />} />
             <Route path="/components/Api" element={<Apis />} />
             <Route
               path="/components/Austen-cabret"
@@ -124,12 +147,13 @@ function App() {
             />
             <Route path="/components/Docs" element={<Docs />} />
             <Route
-              path="/components/Generlate"
-              element={<Generlate theme={theme} />}
+              path="/components/Home"
+              element={<Home theme={theme} />}
             />
-            <Route path="/components/Home" element={<Home theme={theme} />} />
+            <Route path="/components/About" element={<About theme={theme} />} />
             <Route path="/components/Finances" element={<Finances />} />
             <Route path="/components/Legal" element={<Legal />} />
+            <Route path="/components/Login" element={<Login />} />
             <Route path="/components/News" element={<News />} />
             <Route path="/components/Pricing" element={<Pricing />} />
             <Route path="/components/Register" element={<Register />} />

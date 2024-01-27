@@ -76,7 +76,7 @@ function Home({ theme }: ThemeProps) {
           ?
         </a>
         <div>
-          <Link to="/components/Generlate">Text -&gt; 3D!</Link>
+          <Link to="/components/Home">Text -&gt; 3D!</Link>
         </div>
         <section className="hidden">
           Meet Generlate, <br />a text to object generator. Your words - our

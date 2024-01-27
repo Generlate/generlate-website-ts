@@ -24,7 +24,7 @@ const Register = () => {
     }
 
     if (navigate) {
-        return <Navigate to="/"/>
+        return <Navigate to="/components/login"/>
     }
 
     

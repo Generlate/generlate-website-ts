@@ -2,12 +2,13 @@ import { BiSolidMicrophoneAlt } from "react-icons/bi";
 import ThreeCanvas from "./ThreeCanvas";
 import React, { useState } from "react";
 import transition from "./transition";
+import { useEffect } from "react";
 
 interface ThemeProps {
   theme: string;
 }
 
-const Generlate: React.FC<ThemeProps> = ({ theme }) => {
+const About: React.FC<ThemeProps> = ({ theme }) => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
 
   function handleDownloadClick() {
@@ -61,6 +62,10 @@ const Generlate: React.FC<ThemeProps> = ({ theme }) => {
     }
   }
 
+
+
+  
+
   return (
     <main className="generlate">
       <div>
@@ -73,6 +78,9 @@ const Generlate: React.FC<ThemeProps> = ({ theme }) => {
             </>
           )}
         </section>
+        {/* <div>
+          {name ? 'Hi ' + name : 'You are not logged in'}
+        </div> */}
         <section>
           <div></div>
 
@@ -96,4 +104,4 @@ const Generlate: React.FC<ThemeProps> = ({ theme }) => {
   );
 };
 
-export default transition(Generlate);
+export default transition(About);
