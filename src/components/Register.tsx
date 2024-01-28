@@ -30,7 +30,7 @@ const Register = () => {
     
 
     return (
-        <form onSubmit={submit}>
+        <form onSubmit={submit} className='register'>
             <h1>Please register</h1>
             <input placeholder="Name" required onChange={e => setName(e.target.value)}/>
 

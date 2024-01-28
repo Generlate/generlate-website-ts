@@ -161,9 +161,8 @@ function App() {
 
 export default App;
 
-//TODO: rebuild the website, without generlate stuff and following scalable scripts' tutorial, to see if it's possible to remove 'props.setName('');' from Login.tsx
+//TODO: change profile icon to picture if user is logged in / add user profile pictures field to database
 //TODO: connect login/logout/register to their appropriate places.
-//TODO: style login/logout/register pages (if any of them are kept)
 //TODO: figure out user names (are they used?)
 //TODO: add Auth0 logins / user login and profiles (jwt auth)
 //TODO: build a django backend

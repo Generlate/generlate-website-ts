@@ -447,6 +447,16 @@ header {
       transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
       pointer-events: none;
 
+      div {
+        ul {
+          margin: 0px;
+          padding: 0.5rem;
+          li {
+            list-style-type: none;
+          }
+        }
+      }
+
       a {
         text-decoration: none;
         color: var(--color-five);
@@ -824,6 +834,17 @@ header {
   }
 }
 
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding-top: 40vh;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
 .news {
   height: calc(100vh - 136px);
   margin-left: 0%;
@@ -857,6 +878,17 @@ header {
     border-radius: var(--border-radius);
     padding: 16px;
   }
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding-top: 40vh;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 
 .team {
@@ -1104,6 +1136,11 @@ header {
     margin-right: 25%;
   }
 
+  .login {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
   .news {
     height: calc(100vh - 107px);
     margin-left: 25%;
@@ -1112,6 +1149,11 @@ header {
 
   .pricing {
     height: calc(100vh - 107px);
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  .register {
     margin-left: 25%;
     margin-right: 25%;
   }
