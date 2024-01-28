@@ -53,20 +53,30 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
 
   let menu; 
 
-  if(props.name === "") {
+  if (!props.name) {
     menu = (
         <ul>
+
+          <input type="email" placeholder="Email address" required  
+          />
+          <input type="password" placeholder="Password" required     
+          />
           <li>
             <Link to="/components/login">Login</Link>
           </li>
+          <button type="submit">Sign in</button>
           <li>
-            <Link to="/components/register">Register</Link>
+            <Link to="/components/Register">Sign up</Link>
           </li>
         </ul>
     )
   } else {
     menu = (
         <ul>
+          <button className="link" onClick={props.toggleTheme} title="colors">
+            <VscColorMode />
+            <p>theme</p>
+          </button>
           <li>
             <Link to="/components/login" onClick={logout}>Logout</Link>
           </li>
@@ -92,31 +102,17 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
         </button>
 
         <form className="dropdown-menu">
-          <a href="../components/Login">login</a>
-          <p title="profile">Log in</p>
-          <input type="email" placeholder="Email address" required 
-              
-          />
+          <div>
+            {props.name ? 'Hi ' + props.name : 'You are not logged in'}
+          </div>
 
-          <input type="password" placeholder="Password" required 
-              
-          />
-
-          <a href="../components/Register" title="profile">
-            Sign up
-          </a>
-          <button type="submit">Submit</button>
-          <button className="link" onClick={props.toggleTheme} title="colors">
-            <VscColorMode />
-            <p>theme</p>
-          </button>
+          <div>
+            {menu}
+          </div>
         </form>
-        <div>
-          {menu}
-        </div>
-        <div>
-          {props.name ? 'Hi ' + props.name : 'You are not logged in'}
-        </div>
+
+
+
       </div>
     </header>
   );

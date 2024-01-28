@@ -137,7 +137,7 @@ function App() {
         <Header toggleTheme={toggleTheme} theme={theme} name={name} setName={setName}/>
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Home  name={name} setName={setName}/>} />
+            <Route path="/" element={<Home  name={name} setName={setName} theme={theme}/>} />
             <Route path="/components/About" element={<About theme={theme} />} />
             <Route path="/components/Api" element={<Apis />} />
             <Route

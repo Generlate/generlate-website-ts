@@ -27,7 +27,7 @@ const Login = (props: { setName: (name: string) => void }) => {
 
         setNavigate(true);
         props.setName(content.name);
-        props.setName('');
+        props.setName("");
     }
 
     if (navigate) {
