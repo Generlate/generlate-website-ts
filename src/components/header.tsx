@@ -56,15 +56,9 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
   if (!props.name) {
     menu = (
         <ul>
-
-          <input type="email" placeholder="Email address" required  
-          />
-          <input type="password" placeholder="Password" required     
-          />
           <li>
             <Link to="/components/login">Login</Link>
           </li>
-          <button type="submit">Sign in</button>
           <li>
             <Link to="/components/Register">Sign up</Link>
           </li>
@@ -73,7 +67,14 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
   } else {
     menu = (
         <ul>
-          <button className="link" onClick={props.toggleTheme} title="colors">
+          <button
+            className="link"
+            onClick={(e) => {
+              e.preventDefault(); // Prevent default form submission behavior
+              props.toggleTheme();
+            }}
+            title="colors"
+          >
             <VscColorMode />
             <p>theme</p>
           </button>
@@ -103,16 +104,13 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
 
         <form className="dropdown-menu">
           <div>
-            {props.name ? 'Hi ' + props.name : 'You are not logged in'}
+            {props.name ? 'Hi ' + props.name : ''}
           </div>
 
           <div>
             {menu}
           </div>
         </form>
-
-
-
       </div>
     </header>
   );
