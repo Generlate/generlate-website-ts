@@ -453,6 +453,8 @@ header {
           padding: 0.5rem;
           li {
             list-style-type: none;
+            display: flex;
+            align-items: center;
           }
         }
       }

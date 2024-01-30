@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BiUserCircle } from "react-icons/bi";
 import { VscColorMode } from "react-icons/vsc";
+import { ImExit } from "react-icons/im";
+import { TiUserAdd } from "react-icons/ti";
+import { RiUserFollowFill } from "react-icons/ri";
 
 
 const Header = (props: { toggleTheme: () => void, theme:string , name: string, setName: (name: string) => void }) => {
@@ -57,9 +60,11 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
     menu = (
         <ul>
           <li>
+            < RiUserFollowFill size={20}/>
             <Link to="/components/login">Login</Link>
           </li>
           <li>
+            < TiUserAdd size={23}/>
             <Link to="/components/Register">Sign up</Link>
           </li>
         </ul>
@@ -79,6 +84,7 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
             <p>theme</p>
           </button>
           <li>
+            <ImExit size={19}/>
             <Link to="/components/login" onClick={logout}>Logout</Link>
           </li>
         </ul>

@@ -161,25 +161,25 @@ function App() {
 
 export default App;
 
+//TODO: modify database to have a field for user profile pic
 //TODO: change profile icon to picture if user is logged in / add user profile pictures field to database
-//TODO: connect login/logout/register to their appropriate places.
-//TODO: figure out user names (are they used?)
-//TODO: add Auth0 logins / user login and profiles (jwt auth)
-//TODO: build a django backend
-//TODO: make user profiles work
-//TODO: add user_input history
+//TODO: connect login/logout/register to their appropriate places. (move to the header)
+//TODO: add user_input history (modify database fields to include user_input_history)
 //TODO: add Next.js
 //TODO: add styleX
+//TODO: host django on azure server (maybe time to check out aws)
+//TODO: set up azure CI/CD to get local updates quickly to the server
+//TODO: make voice input button work (npm install react-speech-recognition)
 //TODO: better background gradient
 //TODO: add up arrows on footer buttons on desktop
 //TODO: maybe move header inside pages and turn background color invisible on generlate page. keep header width inside the 50%. remove color from canvas. (might need to figure out with home page canvases)
 //TODO: change UI so that text input is on top of canvas and canvas is the entire page.
 //TODO: fix arrow icons not working on meta quest browser
-//TODO: host django on azure server (maybe time to check out aws)
-//TODO: set up azure CI/CD to get local updates quickly to the server
 //TODO: make all pages work on ipad and mobile (normal browser, not app view)
 //TODO: add sphere with flat bottom to canvas scenes so objects can cast shadow and xyz indicator
 //TODO: polish
-//TODO: add search bar, add search bar functionality
+//TODO: add search bar, add search bar functionality (probably not worthwhile. should just be a part of the text input, which can answer questions or provide links)
 //TODO: make the 'text to 3d' button have that glossy blurred look
+//TODO: better icons? (maybe not worth the time. try 'https://feathericons.com/', 'https://heroicons.dev/')
 //TODO: refine sub pages
+//TODO: add Auth0 and/or SSO and/or faceid
