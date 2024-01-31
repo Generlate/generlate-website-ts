@@ -161,14 +161,10 @@ function App() {
 
 export default App;
 
-//TODO: modify database to have a field for user profile pic
-//TODO: change profile icon to picture if user is logged in / add user profile pictures field to database
+//TODO: change profile icon to picture if user is logged in 
 //TODO: connect login/logout/register to their appropriate places. (move to the header)
-//TODO: add user_input history (modify database fields to include user_input_history)
 //TODO: add Next.js
 //TODO: add styleX
-//TODO: host django on azure server (maybe time to check out aws)
-//TODO: set up azure CI/CD to get local updates quickly to the server
 //TODO: make voice input button work (npm install react-speech-recognition)
 //TODO: better background gradient
 //TODO: add up arrows on footer buttons on desktop
@@ -183,3 +179,5 @@ export default App;
 //TODO: better icons? (maybe not worth the time. try 'https://feathericons.com/', 'https://heroicons.dev/')
 //TODO: refine sub pages
 //TODO: add Auth0 and/or SSO and/or faceid
+
+

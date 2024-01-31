@@ -91,6 +91,16 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
     )
   }
 
+  let profile;
+  if (props.name) {
+    const baseUrl = "http://127.0.0.1:8000";  // Adjust this to your Django backend's base URL
+    const profilePicturePath = "media/user_images/profile.jpeg";  // Replace with the actual path from your database
+    const profilePictureUrl = `${baseUrl}/${profilePicturePath}`;
+    profile = <img src={profilePictureUrl} alt="profile" title="profile" />;
+  } else {
+    profile = <BiUserCircle title="user options" />;
+  }
+
   return (
     <header>
       <Link to="/components/About">
@@ -105,7 +115,7 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
           data-dropdown-button
           onClick={() => toggleDropdown("profile")}
         >
-          <BiUserCircle title="user options" />
+          {profile}
         </button>
 
         <form className="dropdown-menu">

@@ -428,6 +428,12 @@ header {
       svg {
         cursor: pointer;
       }
+
+      img {
+        border-radius: 50%;
+        width: 39px;
+        padding-top: 9px;
+      }
     }
 
     .dropdown-menu {
