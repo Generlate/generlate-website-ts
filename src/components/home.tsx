@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BiSolidMicrophoneAlt } from "react-icons/bi";
 import ThreeCanvas from "./ThreeCanvas";
 import transition from "./transition";
+import { TbMessage2Up } from "react-icons/tb";
 
 const Home = (props: { name: string, theme: string  }) => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
@@ -62,7 +63,7 @@ const Home = (props: { name: string, theme: string  }) => {
   
 
   return (
-    <main className="generlate">
+    <main className="home">
       <div>
         <p>?</p>
         <section>
@@ -88,7 +89,8 @@ const Home = (props: { name: string, theme: string  }) => {
               onKeyDown={enterKey}
             />
             <button onClick={handleInputClick} title="text input">
-              &#9650;
+              {/* &#9650; */}
+              <TbMessage2Up />
             </button>
           </div>
         </section>

@@ -55,7 +55,7 @@ function About({ theme }: ThemeProps) {
   }, []);
 
   useEffect(() => {
-    const videoElement = document.querySelector(".home > video") as HTMLVideoElement | null;
+    const videoElement = document.querySelector(".about > video") as HTMLVideoElement | null;
     if (videoElement) {
       if (theme === "dark") {
         videoElement.style.filter = "hue-rotate(217deg) saturate(20%)";
@@ -67,7 +67,7 @@ function About({ theme }: ThemeProps) {
 
   return (
     <>
-      <main className="home">
+      <main className="about">
         <video autoPlay playsInline muted loop>
           <source src="/advertisement.mp4" type="video/mp4" />
           Your browser does not support the video tag.

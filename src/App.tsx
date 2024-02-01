@@ -92,7 +92,7 @@ function App() {
         "rgba(25, 25, 25, 0.2)"
       );
 
-      const videoElement = document.querySelector(".home > video") as HTMLVideoElement | null;
+      const videoElement = document.querySelector(".about > video") as HTMLVideoElement | null;
       if (videoElement) {
         videoElement.style.filter = "saturate(20%)";
       }

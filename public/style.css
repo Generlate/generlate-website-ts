@@ -215,7 +215,7 @@ footer {
   }
 }
 
-.generlate {
+.home {
   height: 100vh;
   background-color: var(--color-one);
 
@@ -553,7 +553,7 @@ header {
   }
 }
 
-.home {
+.about {
   .hidden {
     opacity: 0;
     transition: opactiy 4.35s;
@@ -991,7 +991,7 @@ header {
     }
   }
 
-  .generlate {
+  .home {
     div {
       > p {
         display: inline-block;
@@ -1017,7 +1017,7 @@ header {
     width: 150px;
   }
 
-  .home {
+  .about {
     > video {
       width: 100%;
       height: 100vh;
