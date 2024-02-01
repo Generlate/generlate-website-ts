@@ -56,12 +56,6 @@ const Home = (props: { name: string, theme: string  }) => {
     }
   }
 
-
-
-
-
-  
-
   return (
     <main className="home">
       <div>
@@ -89,7 +83,6 @@ const Home = (props: { name: string, theme: string  }) => {
               onKeyDown={enterKey}
             />
             <button onClick={handleInputClick} title="text input">
-              {/* &#9650; */}
               <TbMessage2Up />
             </button>
           </div>
