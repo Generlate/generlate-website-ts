@@ -199,9 +199,8 @@ function App() {
 
 export default App;
 
-//TODO: clean up code
+//TODO: clean up code (color theme and profile picture)
 //TODO: delete extra profile pictures from directory and check how image on site behaves when there is no image in the directory
-//TODO: add color_theme field, serializer?, view, url, and link it to react
 //TODO: connect login/logout/register to their appropriate places. (move to the header)
 //TODO: add Next.js
 //TODO: add styleX

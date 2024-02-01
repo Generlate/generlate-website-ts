@@ -31,14 +31,13 @@ const Register = () => {
 
     return (
         <form onSubmit={submit} className='register'>
-            <h1>Please register</h1>
             <input placeholder="Name" required onChange={e => setName(e.target.value)}/>
 
             <input type="email" placeholder="Email address" required onChange={e => setEmail(e.target.value)}/>
 
             <input type="password" placeholder="Password" required onChange={e => setPassword(e.target.value)}/>
             
-            <button type="submit">Submit</button>
+            <button type="submit">Sign up</button>
         </form>
     );
 };

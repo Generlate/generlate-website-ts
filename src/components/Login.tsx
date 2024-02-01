@@ -36,7 +36,6 @@ const Login = (props: { setName: (name: string) => void }) => {
 
     return (
         <form onSubmit={submit} className="login">
-            <h1>Please sign in</h1>
             <input type="email" placeholder="Email address" required 
                 onChange={e => setEmail(e.target.value)}
             />

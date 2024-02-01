@@ -127,7 +127,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
         <ul>
           <li>
             < RiUserFollowFill size={20}/>
-            <Link to="/components/login">Login</Link>
+            <Link to="/components/login">Sign in</Link>
           </li>
           <li>
             < TiUserAdd size={23}/>
