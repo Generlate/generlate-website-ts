@@ -9,12 +9,6 @@ import { RiUserFollowFill } from "react-icons/ri";
 
 const Header = (props: { toggleTheme: () => void, theme:string , name: string, setName: (name: string) => void }) => {
   
-
-
-
-  
-
-
   const headerImageSrc =
     props.theme === "dark" ? "/generlate-dark.webp" : "/generlate-light.webp";
 
@@ -52,7 +46,52 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
     });
 
     props.setName('');
+    setProfilePicture(null);
   }
+
+
+  let [profilePicture, setProfilePicture] = useState<string | null>(null);
+  let [profilePictureFile, setProfilePictureFile] = useState<File | null>(null);
+
+  useEffect(() => {
+  // This code block will run when profilePicture state changes
+  if (profilePictureFile) {
+    console.log(profilePictureFile);
+    console.log(profilePictureFile.name);
+
+    // Assuming you want to perform some action with the uploaded picture
+    // For example, you can send the picture to the server here
+    const formData = new FormData();
+    formData.append('user_image', profilePictureFile);
+
+    // Replace the URL with your actual server endpoint
+    fetch('http://localhost:8000/api/upload-user-images', {
+      method: 'PUT',
+      body: formData,
+      credentials: 'include',
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the server response if needed
+        console.log('Server response:', data);
+      })
+      .catch(error => {
+        // Handle the error
+        console.error('Error uploading profile picture:', error);
+      });
+  }
+}, [profilePictureFile]);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const file = event.target.files?.[0];
+    console.log('Selected file:', file);
+    if (file) {
+      setProfilePictureFile(file);
+      setProfilePicture(URL.createObjectURL(file));
+    }
+  };
+
 
   let menu; 
 
@@ -83,23 +122,56 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
             <VscColorMode />
             <p>theme</p>
           </button>
+
+          <div>
+            <BiUserCircle size={19} />
+            <input
+              type="file"
+              accept=".jpg, .jpeg, .png, .gif" // Specify allowed file types
+              onChange={handleFileChange}
+            />
+          </div>
+
           <li>
             <ImExit size={19}/>
             <Link to="/components/login" onClick={logout}>Logout</Link>
           </li>
+
         </ul>
     )
   }
 
-  let profile;
+  let profile: React.ReactNode = <BiUserCircle size={34} title="user options" />;
   if (props.name) {
-    const baseUrl = "http://127.0.0.1:8000";  // Adjust this to your Django backend's base URL
-    const profilePicturePath = "media/user_images/profile.jpeg";  // Replace with the actual path from your database
-    const profilePictureUrl = `${baseUrl}/${profilePicturePath}`;
-    profile = <img src={profilePictureUrl} alt="profile" title="profile" />;
-  } else {
-    profile = <BiUserCircle title="user options" />;
+    fetch('http://localhost:8000/api/user-data', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Check if the user_image exists in the server. If it does, use it; otherwise, use the default image
+        const userImage = data.user_image || '';
+
+        const profilePictureUrl = 'http://localhost:8000' + userImage
+
+        // Set the 'profile' variable to an <img> element with the source set to profilePictureUrl
+        setProfilePicture(profilePictureUrl);
+        // profile = <img src={profilePicture} alt="profile" title="profile" />;
+
+      })
+      .catch(error => {
+        console.error('Error fetching user information:', error);
+        // In case of an error, use the default icon
+        profile = <BiUserCircle title="user options" />;
+      });
   }
+
+  if (profilePicture) {
+    profile = <img src={profilePicture} alt="profile" title="profile" />;
+  } 
 
   return (
     <header>

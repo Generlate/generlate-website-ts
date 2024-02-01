@@ -111,6 +111,7 @@ const useTheme = () => {
 
 function App() {
   const [name, setName] = useState('');
+  
 
 
   useEffect(() => {
@@ -161,7 +162,7 @@ function App() {
 
 export default App;
 
-//TODO: change profile icon to picture if user is logged in 
+//TODO: make the profile picure link be dynamic through a fetch get request
 //TODO: connect login/logout/register to their appropriate places. (move to the header)
 //TODO: add Next.js
 //TODO: add styleX

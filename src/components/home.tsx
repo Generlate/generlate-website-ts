@@ -3,14 +3,13 @@ import { BiSolidMicrophoneAlt } from "react-icons/bi";
 import ThreeCanvas from "./ThreeCanvas";
 import transition from "./transition";
 
-
-
 const Home = (props: { name: string, theme: string  }) => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
+  const [model, setModel] = useState("/box_4.obj");
 
   function handleDownloadClick() {
     const a = document.createElement("a");
-    a.href = "/box_4.obj";
+    a.href = model;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -20,36 +19,33 @@ const Home = (props: { name: string, theme: string  }) => {
     const input = document.getElementById("generationbar");
 
     if (input instanceof HTMLInputElement) {
-      const text = input.value;
 
-      fetch("/api/your-endpoint", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: text }),
+      fetch("http://localhost:8000/api/user-data", {
+        method: "GET",
+        headers: {"Content-Type": "application/json"},
+        credentials: 'include'
       })
-        .then((response) => response.json())
+        .then((response) => response.json())  
         .then((data) => {
-          console.log("Success:", data);
+            const generatedObjectPath = '/' + data.generated_object_file_path;
+            setModel(generatedObjectPath);
+                  setShowDownloadButton(true);
+
+            const inputText = input.value;
+            const newParagraph = document.createElement("p");
+            newParagraph.textContent = inputText;
+
+            const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
+
+            if (targetSection instanceof HTMLElement) {
+              targetSection.appendChild(newParagraph);
+            }
+
+            input.value = "";
         })
         .catch((error) => {
-          console.error("Error:", error);
+            console.error("Error:", error);
         });
-
-      setShowDownloadButton(true);
-
-      const inputText = input.value;
-      const newParagraph = document.createElement("p");
-      newParagraph.textContent = inputText;
-
-      const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
-
-      if (targetSection instanceof HTMLElement) {
-        targetSection.appendChild(newParagraph);
-      }
-
-      input.value = "";
     }
   }
 
@@ -58,6 +54,8 @@ const Home = (props: { name: string, theme: string  }) => {
       handleInputClick();
     }
   }
+
+
 
 
 
@@ -71,7 +69,7 @@ const Home = (props: { name: string, theme: string  }) => {
           {showDownloadButton && (
             <>
               <button onClick={handleDownloadClick}>Download</button>
-              <ThreeCanvas modelPath="/box_4.obj" theme={props.theme} />
+              <ThreeCanvas modelPath={model} theme={props.theme} />
             </>
           )}
         </section>
