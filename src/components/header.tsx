@@ -7,7 +7,7 @@ import { TiUserAdd } from "react-icons/ti";
 import { RiUserFollowFill } from "react-icons/ri";
 
 
-const Header = (props: { toggleTheme: () => void, theme:string , name: string, setName: (name: string) => void }) => {
+const Header = (props: { useTheme: (arg: string) => void, theme:string , name: string, setName: (name: string) => void }) => {
   
   const headerImageSrc =
     props.theme === "dark" ? "/generlate-dark.webp" : "/generlate-light.webp";
@@ -115,7 +115,7 @@ const Header = (props: { toggleTheme: () => void, theme:string , name: string, s
             className="link"
             onClick={(e) => {
               e.preventDefault(); // Prevent default form submission behavior
-              props.toggleTheme();
+              props.useTheme('dark');
             }}
             title="colors"
           >

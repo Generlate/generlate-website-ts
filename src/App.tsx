@@ -19,10 +19,28 @@ import { AnimatePresence } from "framer-motion";
 
 export const ThemeContext = createContext({});
 
-const useTheme = () => {
-  const [theme, setTheme] = useState("light");
 
-  const toggleTheme = () => {
+function App() {
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    (
+        async () => {
+          const response = await fetch("http://localhost:8000/api/user", {
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include',
+          });
+
+          const content = await response.json();
+
+          setName(content.name);
+        }
+    )();
+  });
+
+  const [theme, setTheme] = useState("light");
+  const useTheme = () => {
+
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
 
     if (theme === "dark") {
@@ -102,40 +120,14 @@ const useTheme = () => {
         "rgba(230, 230, 230, 0.2)"
       );
     }
+
+    return { theme, useTheme };
   };
 
-  return { theme, toggleTheme };
-};
-
-
-
-function App() {
-  const [name, setName] = useState('');
-  
-
-
-  useEffect(() => {
-    (
-        async () => {
-          const response = await fetch("http://localhost:8000/api/user", {
-            headers: { "Content-Type": "application/json" },
-            credentials: 'include',
-          });
-
-          const content = await response.json();
-
-          setName(content.name);
-        }
-    )();
-  });
-
-  const { theme, toggleTheme } = useTheme();
-
-
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme } }>
+    <ThemeContext.Provider value={{ theme, useTheme } }>
       <div className={`app ${theme}`}>
-        <Header toggleTheme={toggleTheme} theme={theme} name={name} setName={setName}/>
+        <Header useTheme={useTheme} theme={theme} name={name} setName={setName}/>
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<Home  name={name} setName={setName} theme={theme}/>} />
@@ -162,7 +154,9 @@ function App() {
 
 export default App;
 
-//TODO: make the profile picure link be dynamic through a fetch get request
+//TODO: clean up code
+//TODO: delete extra profile pictures from directory and check how image on site behaves when there is no image in the directory
+//TODO: add color_theme field, serializer?, view, url, and link it to react
 //TODO: connect login/logout/register to their appropriate places. (move to the header)
 //TODO: add Next.js
 //TODO: add styleX
