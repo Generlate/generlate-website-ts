@@ -38,12 +38,23 @@ function App() {
     )();
   });
 
-  const [theme, setTheme] = useState("light");
+  let [theme, setTheme] = useState("light");
   const useTheme = () => {
 
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
 
     if (theme === "dark") {
+      changeColorsToDark();
+
+    } else {
+      changeColorsToLight();
+
+    }
+
+    return { theme, useTheme };
+  };
+
+  function changeColorsToLight() {
       document.documentElement.style.setProperty(
         "--color-one",
         "rgb(250, 250, 250)"
@@ -85,7 +96,10 @@ function App() {
       if (videoElement) {
         videoElement.style.filter = "saturate(20%)";
       }
-    } else {
+
+  }
+
+  function changeColorsToDark() {
       document.documentElement.style.setProperty("--color-one", "rgb(5, 5, 4)");
       document.documentElement.style.setProperty(
         "--color-two",
@@ -119,10 +133,41 @@ function App() {
         "--color-drop-down-box-shadow",
         "rgba(230, 230, 230, 0.2)"
       );
-    }
+    
+  }
 
-    return { theme, useTheme };
-  };
+  
+
+
+  if (theme) {
+    fetch('http://localhost:8000/api/user-data', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        const userColorTheme = data.user_color_theme || 'light';
+
+        setTheme(userColorTheme);
+        if (userColorTheme === "dark") {
+          changeColorsToDark();
+
+        } else {
+          changeColorsToLight();
+
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching user information:', error);
+        theme = "light";
+      });
+  }
+
+
+
 
   return (
     <ThemeContext.Provider value={{ theme, useTheme } }>

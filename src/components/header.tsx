@@ -54,33 +54,33 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
   let [profilePictureFile, setProfilePictureFile] = useState<File | null>(null);
 
   useEffect(() => {
-  // This code block will run when profilePicture state changes
-  if (profilePictureFile) {
-    console.log(profilePictureFile);
-    console.log(profilePictureFile.name);
+    // This code block will run when profilePicture state changes
+    if (profilePictureFile) {
+      console.log(profilePictureFile);
+      console.log(profilePictureFile.name);
 
-    // Assuming you want to perform some action with the uploaded picture
-    // For example, you can send the picture to the server here
-    const formData = new FormData();
-    formData.append('user_image', profilePictureFile);
+      // Assuming you want to perform some action with the uploaded picture
+      // For example, you can send the picture to the server here
+      const formData = new FormData();
+      formData.append('user_image', profilePictureFile);
 
-    // Replace the URL with your actual server endpoint
-    fetch('http://localhost:8000/api/upload-user-images', {
-      method: 'PUT',
-      body: formData,
-      credentials: 'include',
-    })
-      .then(response => response.json())
-      .then(data => {
-        // Handle the server response if needed
-        console.log('Server response:', data);
+      // Replace the URL with your actual server endpoint
+      fetch('http://localhost:8000/api/upload-user-images', {
+        method: 'PUT',
+        body: formData,
+        credentials: 'include',
       })
-      .catch(error => {
-        // Handle the error
-        console.error('Error uploading profile picture:', error);
-      });
-  }
-}, [profilePictureFile]);
+        .then(response => response.json())
+        .then(data => {
+          // Handle the server response if needed
+          console.log('Server response:', data);
+        })
+        .catch(error => {
+          // Handle the error
+          console.error('Error uploading profile picture:', error);
+        });
+    }
+  }, [profilePictureFile]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -91,6 +91,33 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
       setProfilePicture(URL.createObjectURL(file));
     }
   };
+
+
+
+
+
+  const handleThemeSwitch = () => {
+      let newTheme = props.theme === "light" ? "dark" : "light";
+
+      const formData = new FormData();
+      formData.append('user_color_theme', newTheme);
+
+      fetch('http://localhost:8000/api/update-user-color-theme', {
+          method: 'PUT',
+          body: formData,
+          credentials: 'include',
+        })
+          .then(response => response.json())
+          .then(data => {
+            props.useTheme(newTheme);
+          })
+          .catch(error => {
+            console.error('Error updating color theme:', error);
+          });
+  };
+
+
+
 
 
   let menu; 
@@ -114,8 +141,8 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
           <button
             className="link"
             onClick={(e) => {
-              e.preventDefault(); // Prevent default form submission behavior
-              props.useTheme('dark');
+              e.preventDefault(); 
+              handleThemeSwitch();
             }}
             title="colors"
           >
