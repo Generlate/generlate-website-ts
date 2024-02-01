@@ -6,6 +6,11 @@ const News = () => {
     <>
       <main className="news">
         <section>
+          <h2>The back end is up!</h2>
+          <p>02/04/2024</p>
+          <p>description</p>
+        </section>
+        <section>
           <h2>The front end is up!</h2>
           <p>01/09/2024</p>
           <p>description</p>
