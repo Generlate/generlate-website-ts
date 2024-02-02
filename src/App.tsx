@@ -188,8 +188,7 @@ function App() {
 
 export default App;
 
-//TODO: clean up code (color theme and profile picture)
-//TODO: delete extra profile pictures from directory and check how image on site behaves when there is no image in the directory
+//TODO: host on vercel
 //TODO: add Next.js
 //TODO: add styleX
 //TODO: make voice input button work (npm install react-speech-recognition)
