@@ -16,9 +16,7 @@ import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 
-
 export const ThemeContext = createContext({});
-
 
 function App() {
   const [name, setName] = useState('');
@@ -136,9 +134,6 @@ function App() {
     
   }
 
-  
-
-
   if (theme) {
     fetch('http://localhost:8000/api/user-data', {
       method: 'GET',
@@ -165,9 +160,6 @@ function App() {
         theme = "light";
       });
   }
-
-
-
 
   return (
     <ThemeContext.Provider value={{ theme, useTheme } }>
@@ -201,7 +193,6 @@ export default App;
 
 //TODO: clean up code (color theme and profile picture)
 //TODO: delete extra profile pictures from directory and check how image on site behaves when there is no image in the directory
-//TODO: connect login/logout/register to their appropriate places. (move to the header)
 //TODO: add Next.js
 //TODO: add styleX
 //TODO: make voice input button work (npm install react-speech-recognition)

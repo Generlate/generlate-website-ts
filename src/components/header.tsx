@@ -38,63 +38,36 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
     };
   }, []);
 
-  const logout = async () => {
-    await fetch("http://localhost:8000/api/logout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: 'include',
-    });
-
-    props.setName('');
-    setProfilePicture(null);
-  }
-
 
   let [profilePicture, setProfilePicture] = useState<string | null>(null);
   let [profilePictureFile, setProfilePictureFile] = useState<File | null>(null);
 
   useEffect(() => {
-    // This code block will run when profilePicture state changes
     if (profilePictureFile) {
-      console.log(profilePictureFile);
-      console.log(profilePictureFile.name);
 
-      // Assuming you want to perform some action with the uploaded picture
-      // For example, you can send the picture to the server here
       const formData = new FormData();
       formData.append('user_image', profilePictureFile);
 
-      // Replace the URL with your actual server endpoint
       fetch('http://localhost:8000/api/upload-user-images', {
         method: 'PUT',
         body: formData,
         credentials: 'include',
       })
         .then(response => response.json())
-        .then(data => {
-          // Handle the server response if needed
-          console.log('Server response:', data);
-        })
         .catch(error => {
-          // Handle the error
           console.error('Error uploading profile picture:', error);
         });
     }
   }, [profilePictureFile]);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const changePicture = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const file = event.target.files?.[0];
-    console.log('Selected file:', file);
     if (file) {
       setProfilePictureFile(file);
       setProfilePicture(URL.createObjectURL(file));
     }
   };
-
-
-
-
 
   const handleThemeSwitch = () => {
       let newTheme = props.theme === "light" ? "dark" : "light";
@@ -117,7 +90,45 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
   };
 
 
+  const logout = async () => {
+    await fetch("http://localhost:8000/api/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: 'include',
+    });
 
+    props.setName('');
+    setProfilePicture(null);
+  }
+
+
+  let profile: React.ReactNode = <BiUserCircle size={34} title="user options" />;
+  if (props.name) {
+    fetch('http://localhost:8000/api/user-data', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        const userImage = data.user_image || '';
+
+        const profilePictureUrl = 'http://localhost:8000' + userImage
+
+        setProfilePicture(profilePictureUrl);
+
+      })
+      .catch(error => {
+        console.error('Error fetching user information:', error);
+        profile = <BiUserCircle title="user options" />;
+      });
+  }
+
+  if (profilePicture) {
+    profile = <img src={profilePicture} alt="profile" title="profile" />;
+  } 
 
 
   let menu; 
@@ -154,8 +165,8 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
             <BiUserCircle size={19} />
             <input
               type="file"
-              accept=".jpg, .jpeg, .png, .gif" // Specify allowed file types
-              onChange={handleFileChange}
+              accept=".jpg, .jpeg, .png, .gif" 
+              onChange={changePicture}
             />
           </div>
 
@@ -168,37 +179,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
     )
   }
 
-  let profile: React.ReactNode = <BiUserCircle size={34} title="user options" />;
-  if (props.name) {
-    fetch('http://localhost:8000/api/user-data', {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(response => response.json())
-      .then(data => {
-        // Check if the user_image exists in the server. If it does, use it; otherwise, use the default image
-        const userImage = data.user_image || '';
 
-        const profilePictureUrl = 'http://localhost:8000' + userImage
-
-        // Set the 'profile' variable to an <img> element with the source set to profilePictureUrl
-        setProfilePicture(profilePictureUrl);
-        // profile = <img src={profilePicture} alt="profile" title="profile" />;
-
-      })
-      .catch(error => {
-        console.error('Error fetching user information:', error);
-        // In case of an error, use the default icon
-        profile = <BiUserCircle title="user options" />;
-      });
-  }
-
-  if (profilePicture) {
-    profile = <img src={profilePicture} alt="profile" title="profile" />;
-  } 
 
   return (
     <header>
