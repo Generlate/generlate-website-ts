@@ -9,7 +9,7 @@ const Login = (props: { setName: (name: string) => void }) => {
     const [navigate, setNavigate] = useState(false);
 
 
-   const submit = async (e: SyntheticEvent) => {
+    const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
         const response = await fetch('http://localhost:8000/api/login', {
@@ -27,7 +27,7 @@ const Login = (props: { setName: (name: string) => void }) => {
 
         setNavigate(true);
         props.setName(content.name);
-        // props.setName("");
+        props.setName("");
     }
 
     if (navigate) {
