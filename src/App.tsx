@@ -43,10 +43,8 @@ function App() {
 
     if (theme === "dark") {
       changeColorsToDark();
-
     } else {
       changeColorsToLight();
-
     }
 
     return { theme, useTheme };
@@ -152,7 +150,6 @@ function App() {
 
         } else {
           changeColorsToLight();
-
         }
       })
       .catch(error => {

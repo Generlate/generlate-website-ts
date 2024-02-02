@@ -9,7 +9,7 @@ import { RiUserFollowFill } from "react-icons/ri";
 
 const Header = (props: { useTheme: (arg: string) => void, theme:string , name: string, setName: (name: string) => void }) => {
   
-  const headerImageSrc =
+  const logoImageSrc =
     props.theme === "dark" ? "/generlate-dark.webp" : "/generlate-light.webp";
 
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -69,7 +69,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
     }
   };
 
-  const handleThemeSwitch = () => {
+  const switchTheme = () => {
       let newTheme = props.theme === "light" ? "dark" : "light";
 
       const formData = new FormData();
@@ -153,7 +153,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
             className="link"
             onClick={(e) => {
               e.preventDefault(); 
-              handleThemeSwitch();
+              switchTheme();
             }}
             title="colors"
           >
@@ -184,7 +184,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
   return (
     <header>
       <Link to="/components/About">
-        <img src={headerImageSrc} alt="Generlate logo" title="home" />
+        <img src={logoImageSrc} alt="Generlate logo" title="home" />
       </Link>
       <div
         className={`dropdown ${activeDropdown === "profile" ? "active" : ""}`}
