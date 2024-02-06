@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     (
         async () => {
-          const response = await fetch("http://localhost:8000/api/user", {
+          const response = await fetch("http://18.224.58.130:8000/api/user", {
             headers: { "Content-Type": "application/json" },
             credentials: 'include',
           });
@@ -133,7 +133,7 @@ function App() {
   }
 
   if (theme) {
-    fetch('http://localhost:8000/api/user-data', {
+    fetch('http://18.224.58.130:8000/api/user-data', {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -205,5 +205,6 @@ export default App;
 //TODO: better icons? (maybe not worth the time. try 'https://feathericons.com/', 'https://heroicons.dev/')
 //TODO: refine sub pages
 //TODO: add Auth0 and/or SSO and/or faceid
+//TODO: include a Benefits section and a Use Cases section on About.tsx
 
 
