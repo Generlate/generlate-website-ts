@@ -25,7 +25,7 @@ const Login = (props: { setName: (name: string) => void }) => {
         const content = await response.json();
 
 
-        // setNavigate(true);
+        setNavigate(true);
         props.setName(content.name);
         props.setName("");
     }
