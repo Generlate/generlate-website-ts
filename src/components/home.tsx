@@ -24,8 +24,7 @@ const Home = (props: { name: string, theme: string  }) => {
       fetch("https://generlate.azurewebsites.net/api/user-data", {
         method: "GET",
         headers: {"Content-Type": "application/json"},
-        credentials: 'include',
-        mode: 'no-cors',
+        credentials: 'include'
       })
         .then((response) => response.json())  
         .then((data) => {

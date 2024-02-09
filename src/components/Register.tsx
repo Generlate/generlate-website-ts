@@ -13,7 +13,6 @@ const Register = () => {
         await fetch('https://generlate.azurewebsites.net/api/register', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            mode: 'no-cors',
             body: JSON.stringify({
                 name,
                 email,
