@@ -15,11 +15,6 @@ import React, { useEffect, useState, createContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
-var express = require('express')
-var cors = require('cors')
-var app = express()
-app.use(cors())
-
 export const ThemeContext = createContext({});
 
 function App() {
