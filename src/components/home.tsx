@@ -21,7 +21,7 @@ const Home = (props: { name: string, theme: string  }) => {
 
     if (input instanceof HTMLInputElement) {
 
-      fetch("http://18.224.58.130:8000/api/user-data", {
+      fetch("http://generlate.azurewebsites.net/api/user-data", {
         method: "GET",
         headers: {"Content-Type": "application/json"},
         credentials: 'include'

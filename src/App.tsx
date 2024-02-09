@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     (
         async () => {
-          const response = await fetch("http://18.224.58.130:8000/api/user", {
+          const response = await fetch("http://generlate.azurewebsites.net/api/user", {
             headers: { "Content-Type": "application/json" },
             credentials: 'include',
           });
@@ -133,7 +133,7 @@ function App() {
   }
 
   if (theme) {
-    fetch('http://18.224.58.130:8000/api/user-data', {
+    fetch('http://generlate.azurewebsites.net/api/user-data', {
       method: 'GET',
       credentials: 'include',
       headers: {
