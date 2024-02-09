@@ -26,6 +26,7 @@ function App() {
           const response = await fetch("https://generlate.azurewebsites.net/api/user", {
             headers: { "Content-Type": "application/json" },
             credentials: 'include',
+            mode: 'no-cors',
           });
 
           const content = await response.json();
@@ -138,6 +139,7 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
       },
+      mode: 'no-cors',
     })
       .then(response => response.json())
       .then(data => {

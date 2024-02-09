@@ -16,6 +16,7 @@ const Login = (props: { setName: (name: string) => void }) => {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             credentials: 'include',
+            mode: 'no-cors',
             body: JSON.stringify({
                 email,
                 password

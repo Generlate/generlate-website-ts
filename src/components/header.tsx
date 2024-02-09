@@ -52,6 +52,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
         method: 'PUT',
         body: formData,
         credentials: 'include',
+        mode: 'no-cors',
       })
         .then(response => response.json())
         .catch(error => {
@@ -79,6 +80,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
           method: 'PUT',
           body: formData,
           credentials: 'include',
+          mode: 'no-cors',
         })
           .then(response => response.json())
           .then(data => {
@@ -95,6 +97,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: 'include',
+        mode: 'no-cors',
     });
 
     props.setName('');
@@ -110,6 +113,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
       headers: {
         'Content-Type': 'application/json',
       },
+      mode: 'no-cors',
     })
       .then(response => response.json())
       .then(data => {
