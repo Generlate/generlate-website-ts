@@ -10,7 +10,7 @@ const Register = () => {
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        await fetch('https://generlate.azurewebsites.net/api/register', {
+        await fetch('https://generlate.com/api/register', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
