@@ -21,7 +21,7 @@ const Home = (props: { name: string, theme: string  }) => {
 
     if (input instanceof HTMLInputElement) {
 
-      fetch("https://generlate.com/api/user-data", {
+      fetch("https://api.generlate.com/api/user-data", {
         method: "GET",
         headers: {"Content-Type": "application/json"},
         credentials: 'include'

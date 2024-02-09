@@ -48,7 +48,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
       const formData = new FormData();
       formData.append('user_image', profilePictureFile);
 
-      fetch('https://generlate.com/api/upload-user-images', {
+      fetch('https://api.generlate.com/api/upload-user-images', {
         method: 'PUT',
         body: formData,
         credentials: 'include',
@@ -75,7 +75,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
       const formData = new FormData();
       formData.append('user_color_theme', newTheme);
 
-      fetch('https://generlate.com/api/update-user-color-theme', {
+      fetch('https://api.generlate.com/api/update-user-color-theme', {
           method: 'PUT',
           body: formData,
           credentials: 'include',
@@ -91,7 +91,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
 
 
   const logout = async () => {
-    await fetch("https://generlate.com/api/logout", {
+    await fetch("https://api.generlate.com/api/logout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: 'include',
@@ -104,7 +104,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
 
   let profile: React.ReactNode = <BiUserCircle size={34} title="user options" />;
   if (props.name) {
-    fetch('https://generlate.com/api/user-data', {
+    fetch('https://api.generlate.com/api/user-data', {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -115,7 +115,7 @@ const Header = (props: { useTheme: (arg: string) => void, theme:string , name: s
       .then(data => {
         const userImage = data.user_image || '';
 
-        const profilePictureUrl = 'https://generlate.com' + userImage
+        const profilePictureUrl = 'https://api.generlate.com' + userImage
 
         setProfilePicture(profilePictureUrl);
 
