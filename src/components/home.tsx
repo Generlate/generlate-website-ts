@@ -46,8 +46,9 @@ const Home = (props: { name: string, theme: string  }) => {
         })
         .catch((error) => {
             console.error("Error:", error);
-            setModel("/box_4.obj");
         });
+    } else {
+            setModel("/box_4.obj");
     }
   }
 
