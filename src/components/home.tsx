@@ -28,24 +28,29 @@ const Home = (props: { name: string, theme: string  }) => {
       })
         .then((response) => response.json())  
         .then((data) => {
-            const generatedObjectPath = '/' + data.generated_object_file_path;
-            setModel(generatedObjectPath);
-                  setShowDownloadButton(true);
+          const generatedObjectPath = '/' + data.generated_object_file_path;
+          setModel(generatedObjectPath);
+          setShowDownloadButton(true);
 
-            const inputText = input.value;
-            const newParagraph = document.createElement("p");
-            newParagraph.textContent = inputText;
+          const inputText = input.value;
+          const newParagraph = document.createElement("p");
+          newParagraph.textContent = inputText;
 
-            const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
+          const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
 
-            if (targetSection instanceof HTMLElement) {
-              targetSection.appendChild(newParagraph);
-            }
+          if (targetSection instanceof HTMLElement) {
+            targetSection.appendChild(newParagraph);
+          }
 
-            input.value = "";
+          input.value = "";
+
+          // Check if data.generated_object_file_path is undefined
+          if (data.generated_object_file_path === undefined) {
+            setModel("/box_4.obj");
+          }
         })
         .catch((error) => {
-            console.error("Error:", error);
+          console.error("Error:", error);
         });
     }
   }
