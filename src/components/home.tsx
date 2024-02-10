@@ -23,41 +23,33 @@ const Home = (props: { name: string, theme: string  }) => {
 
       fetch("https://api.generlate.com/api/user-data", {
         method: "GET",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         credentials: 'include'
       })
-        .then((response) => {
-          if (response.status === 404) {
-            // If user does not exist, treat it as a not logged in user
-            throw new Error('User not found');
-          }
-          return response.json();
-        })
+        .then((response) => response.json())  
         .then((data) => {
-          const generatedObjectPath = '/' + data.generated_object_file_path;
-          setModel(generatedObjectPath);
-          setShowDownloadButton(true);
+            const generatedObjectPath = '/' + data.generated_object_file_path;
+            setModel(generatedObjectPath);
+                  setShowDownloadButton(true);
 
-          const inputText = input.value;
-          const newParagraph = document.createElement("p");
-          newParagraph.textContent = inputText;
+            const inputText = input.value;
+            const newParagraph = document.createElement("p");
+            newParagraph.textContent = inputText;
 
-          const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
+            const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
 
-          if (targetSection instanceof HTMLElement) {
-            targetSection.appendChild(newParagraph);
-          }
+            if (targetSection instanceof HTMLElement) {
+              targetSection.appendChild(newParagraph);
+            }
 
-          input.value = "";
+            input.value = "";
         })
         .catch((error) => {
-          // If an error occurs or user does not exist, treat it as a not logged in user and set default model path
-          console.error("Error:", error);
-          const defaultModelPath = '/box_4.obj';
-          setModel(defaultModelPath);
-          setShowDownloadButton(true);
+            console.error("Error:", error);
         });
     }
+
+     setModel('/box_4.obj');
   }
 
   function enterKey(event: React.KeyboardEvent<HTMLInputElement>) {
