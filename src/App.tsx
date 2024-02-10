@@ -187,7 +187,7 @@ function App() {
 
 export default App;
 
-//TODO: host on vercel
+//TODO: make model generation work without an account
 //TODO: add Next.js
 //TODO: add styleX
 //TODO: make voice input button work (npm install react-speech-recognition)
