@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     (
         async () => {
-          const response = await fetch("https://generlate.com/api/user", {
+          const response = await fetch("https://api.generlate.com/api/user", {
             headers: { "Content-Type": "application/json" },
             credentials: 'include',
           });
