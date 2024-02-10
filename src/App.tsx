@@ -132,7 +132,7 @@ function App() {
   }
 
   if (theme) {
-    fetch('https://generlate.com/api/user-data', {
+    fetch('https://api.generlate.com/api/user-data', {
       method: 'GET',
       credentials: 'include',
       headers: {
