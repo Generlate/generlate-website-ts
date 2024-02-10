@@ -48,8 +48,6 @@ const Home = (props: { name: string, theme: string  }) => {
             console.error("Error:", error);
         });
     }
-
-     setModel('/box_4.obj');
   }
 
   function enterKey(event: React.KeyboardEvent<HTMLInputElement>) {
