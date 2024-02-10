@@ -23,40 +23,32 @@ const Home = (props: { name: string, theme: string  }) => {
 
       fetch("https://api.generlate.com/api/user-data", {
         method: "GET",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         credentials: 'include'
       })
-        .then((response) => response.json())
+        .then((response) => response.json())  
         .then((data) => {
-          let generatedObjectPath = '/' + data.generated_object_file_path;
+            const generatedObjectPath = '/' + data.generated_object_file_path;
+            setModel(generatedObjectPath);
+                  setShowDownloadButton(true);
 
-          // Check if the user is not logged in
-          if (!data.logged_in) {
-            // Set a default model path for the not logged in user
-            generatedObjectPath = '/default-model.obj';
-          }
+            const inputText = input.value;
+            const newParagraph = document.createElement("p");
+            newParagraph.textContent = inputText;
 
-          setModel(generatedObjectPath);
-          setShowDownloadButton(true);
+            const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
 
-          const inputText = input.value;
-          const newParagraph = document.createElement("p");
-          newParagraph.textContent = inputText;
+            if (targetSection instanceof HTMLElement) {
+              targetSection.appendChild(newParagraph);
+            }
 
-          const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
-
-          if (targetSection instanceof HTMLElement) {
-            targetSection.appendChild(newParagraph);
-          }
-
-          input.value = "";
+            input.value = "";
         })
         .catch((error) => {
-          console.error("Error:", error);
+            console.error("Error:", error);
         });
     }
   }
-
 
   function enterKey(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
