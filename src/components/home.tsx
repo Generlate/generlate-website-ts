@@ -20,6 +20,7 @@ const Home = (props: { name: string, theme: string  }) => {
     const input = document.getElementById("generationbar");
 
     if (input instanceof HTMLInputElement) {
+
       fetch("https://api.generlate.com/api/user-data", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -27,7 +28,14 @@ const Home = (props: { name: string, theme: string  }) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          const generatedObjectPath = '/' + data.generated_object_file_path;
+          let generatedObjectPath = '/' + data.generated_object_file_path;
+
+          // Check if the user is not logged in
+          if (!data.logged_in) {
+            // Set a default model path for the not logged in user
+            generatedObjectPath = '/default-model.obj';
+          }
+
           setModel(generatedObjectPath);
           setShowDownloadButton(true);
 
@@ -45,12 +53,10 @@ const Home = (props: { name: string, theme: string  }) => {
         })
         .catch((error) => {
           console.error("Error:", error);
-          // User not logged in, set default model path
-          setModel("/box_4.obj");
-          setShowDownloadButton(true);
         });
     }
   }
+
 
   function enterKey(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
