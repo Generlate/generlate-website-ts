@@ -44,7 +44,6 @@ const Home = (props: { name: string, theme: string  }) => {
 
           input.value = "";
 
-          // Check if data.generated_object_file_path is undefined
           if (data.generated_object_file_path === undefined) {
             setModel("/box_4.obj");
           }
