@@ -20,35 +20,35 @@ const Home = (props: { name: string, theme: string  }) => {
     const input = document.getElementById("generationbar");
 
     if (input instanceof HTMLInputElement) {
-
       fetch("https://api.generlate.com/api/user-data", {
         method: "GET",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         credentials: 'include'
       })
-        .then((response) => response.json())  
+        .then((response) => response.json())
         .then((data) => {
-            const generatedObjectPath = '/' + data.generated_object_file_path;
-            setModel(generatedObjectPath);
-                  setShowDownloadButton(true);
+          const generatedObjectPath = '/' + data.generated_object_file_path;
+          setModel(generatedObjectPath);
+          setShowDownloadButton(true);
 
-            const inputText = input.value;
-            const newParagraph = document.createElement("p");
-            newParagraph.textContent = inputText;
+          const inputText = input.value;
+          const newParagraph = document.createElement("p");
+          newParagraph.textContent = inputText;
 
-            const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
+          const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
 
-            if (targetSection instanceof HTMLElement) {
-              targetSection.appendChild(newParagraph);
-            }
+          if (targetSection instanceof HTMLElement) {
+            targetSection.appendChild(newParagraph);
+          }
 
-            input.value = "";
+          input.value = "";
         })
         .catch((error) => {
-            console.error("Error:", error);
+          console.error("Error:", error);
+          // User not logged in, set default model path
+          setModel("/box_4.obj");
+          setShowDownloadButton(true);
         });
-    } else {
-            setModel("/box_4.obj");
     }
   }
 
