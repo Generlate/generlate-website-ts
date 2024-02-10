@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     (
         async () => {
-          const response = await fetch("https://generlate.azurewebsites.net/api/user", {
+          const response = await fetch("https://generlate.com/api/user", {
             headers: { "Content-Type": "application/json" },
             credentials: 'include',
           });
@@ -132,7 +132,7 @@ function App() {
   }
 
   if (theme) {
-    fetch('https://generlate.azurewebsites.net/api/user-data', {
+    fetch('https://generlate.com/api/user-data', {
       method: 'GET',
       credentials: 'include',
       headers: {
