@@ -187,7 +187,8 @@ function App() {
 
 export default App;
 
-//TODO: make model generation work without an account
+//TODO: fix box shadow not interacting with canvas js correctly.
+//TODO: fix dropdown menu width on mobile
 //TODO: add Next.js
 //TODO: add styleX
 //TODO: make voice input button work (npm install react-speech-recognition)
