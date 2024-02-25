@@ -187,6 +187,7 @@ function App() {
 
 export default App;
 
+//TODO: make footer dropdown menu 2 and 3 centered on footer word
 //TODO: fix box shadow not interacting with canvas js correctly.
 //TODO: fix dropdown menu width on mobile
 //TODO: add Next.js

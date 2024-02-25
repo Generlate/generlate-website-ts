@@ -26,7 +26,6 @@ function About({ theme }: ThemeProps) {
       });
     });
 
-    // Ensure elements are available and observe them
     const hiddenElements = document.querySelectorAll(".hidden, .hiddenbottom");
     if (hiddenElements.length === 0) {
       console.log("No elements to observe");
@@ -48,9 +47,9 @@ function About({ theme }: ThemeProps) {
     }, 3000); // Change every 3000 milliseconds (3 seconds)
 
     return () => {
-      clearInterval(interval); // Clear the interval
-      hiddenElements.forEach((el) => observer.unobserve(el)); // Unobserve the elements
-      observer.disconnect(); // Disconnect the observer
+      clearInterval(interval); 
+      hiddenElements.forEach((el) => observer.unobserve(el)); 
+      observer.disconnect(); 
     };
   }, []);
 
@@ -60,7 +59,7 @@ function About({ theme }: ThemeProps) {
       if (theme === "dark") {
         videoElement.style.filter = "hue-rotate(217deg) saturate(20%)";
       } else {
-        videoElement.style.filter = "saturate(20%)"; // Replace with the desired filter for the light theme
+        videoElement.style.filter = "saturate(20%)"; 
       }
     }
   }, [theme]);
