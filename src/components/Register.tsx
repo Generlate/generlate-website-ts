@@ -16,8 +16,8 @@ const Register = () => {
       body: JSON.stringify({
         name,
         email,
-        password,
-      }),
+        password
+      })
     });
 
     setNavigate(true);

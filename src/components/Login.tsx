@@ -15,8 +15,8 @@ const Login = (props: { setName: (name: string) => void }) => {
       credentials: "include",
       body: JSON.stringify({
         email,
-        password,
-      }),
+        password
+      })
     });
 
     const content = await response.json();

@@ -43,7 +43,7 @@ const Header = (props: {
 
   const [profilePicture, setProfilePicture] = useState<string | null>(null);
   const [profilePictureFile, setProfilePictureFile] = useState<File | null>(
-    null,
+    null
   );
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const Header = (props: {
       fetch("https://api.generlate.com/api/upload-user-images", {
         method: "PUT",
         body: formData,
-        credentials: "include",
+        credentials: "include"
       })
         .then((response) => response.json())
         .catch((error) => {
@@ -81,7 +81,7 @@ const Header = (props: {
     fetch("https://api.generlate.com/api/update-user-color-theme", {
       method: "PUT",
       body: formData,
-      credentials: "include",
+      credentials: "include"
     })
       .then((response) => response.json())
       .then((data) => {
@@ -96,7 +96,7 @@ const Header = (props: {
     await fetch("https://api.generlate.com/api/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
+      credentials: "include"
     });
 
     props.setName("");
@@ -111,8 +111,8 @@ const Header = (props: {
       method: "GET",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json",
-      },
+        "Content-Type": "application/json"
+      }
     })
       .then((response) => response.json())
       .then((data) => {

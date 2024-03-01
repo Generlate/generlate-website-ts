@@ -23,7 +23,7 @@ const Home = (props: { name: string; theme: string }) => {
       fetch("https://api.generlate.com/api/user-data", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        credentials: "include"
       })
         .then((response) => response.json())
         .then((data) => {
@@ -36,7 +36,7 @@ const Home = (props: { name: string; theme: string }) => {
           newParagraph.textContent = inputText;
 
           const targetSection = document.querySelector(
-            "section:nth-of-type(2) div:first-of-type",
+            "section:nth-of-type(2) div:first-of-type"
           );
 
           if (targetSection instanceof HTMLElement) {

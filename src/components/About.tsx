@@ -58,7 +58,7 @@ function About({ theme }: ThemeProps) {
 
   useEffect(() => {
     const videoElement = document.querySelector(
-      ".about > video",
+      ".about > video"
     ) as HTMLVideoElement | null;
     if (videoElement) {
       if (theme === "dark") {
