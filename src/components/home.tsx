@@ -4,7 +4,7 @@ import ThreeCanvas from "./ThreeCanvas";
 import transition from "./transition";
 import { TbMessage2Up } from "react-icons/tb";
 
-const Home = (props: { name: string, theme: string  }) => {
+const Home = (props: { name: string; theme: string }) => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
   const [model, setModel] = useState("/box_4.obj");
 
@@ -20,15 +20,14 @@ const Home = (props: { name: string, theme: string  }) => {
     const input = document.getElementById("generationbar");
 
     if (input instanceof HTMLInputElement) {
-
       fetch("https://api.generlate.com/api/user-data", {
         method: "GET",
-        headers: {"Content-Type": "application/json"},
-        credentials: 'include'
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
       })
-        .then((response) => response.json())  
+        .then((response) => response.json())
         .then((data) => {
-          const generatedObjectPath = '/' + data.generated_object_file_path;
+          const generatedObjectPath = "/" + data.generated_object_file_path;
           setModel(generatedObjectPath);
           setShowDownloadButton(true);
 
@@ -36,7 +35,9 @@ const Home = (props: { name: string, theme: string  }) => {
           const newParagraph = document.createElement("p");
           newParagraph.textContent = inputText;
 
-          const targetSection = document.querySelector("section:nth-of-type(2) div:first-of-type");
+          const targetSection = document.querySelector(
+            "section:nth-of-type(2) div:first-of-type",
+          );
 
           if (targetSection instanceof HTMLElement) {
             targetSection.appendChild(newParagraph);

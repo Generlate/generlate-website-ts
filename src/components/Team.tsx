@@ -1,6 +1,7 @@
 import Footer from "./footer";
 import { Link } from "react-router-dom";
 import transition from "./transition";
+import React from "react";
 
 const Team = () => {
   return (

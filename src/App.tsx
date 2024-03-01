@@ -18,26 +18,23 @@ import { AnimatePresence } from "framer-motion";
 export const ThemeContext = createContext({});
 
 function App() {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
   useEffect(() => {
-    (
-        async () => {
-          const response = await fetch("https://api.generlate.com/api/user", {
-            headers: { "Content-Type": "application/json" },
-            credentials: 'include',
-          });
+    (async () => {
+      const response = await fetch("https://api.generlate.com/api/user", {
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
 
-          const content = await response.json();
+      const content = await response.json();
 
-          setName(content.name);
-        }
-    )();
+      setName(content.name);
+    })();
   });
 
   let [theme, setTheme] = useState("light");
   const useTheme = () => {
-
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
 
     if (theme === "dark") {
@@ -50,120 +47,127 @@ function App() {
   };
 
   function changeColorsToLight() {
-      document.documentElement.style.setProperty(
-        "--color-one",
-        "rgb(250, 250, 250)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-two",
-        "rgb(237, 246, 252)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-three",
-        "rgb(168, 210, 216)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-four",
-        "rgb(121, 161, 176)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-five",
-        "rgb(88, 149, 166)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-six",
-        "rgb(47, 95, 110)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-header-dropdown",
-        "rgba(250, 250, 250, 0.1)"
-      );
-      document.documentElement.style.setProperty(
-        "--footer-box-shadow",
-        "0px -10px 10px 0px rgba(121, 161, 176, 0.1)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-drop-down-box-shadow",
-        "rgba(25, 25, 25, 0.2)"
-      );
+    document.documentElement.style.setProperty(
+      "--color-one",
+      "rgb(250, 250, 250)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-two",
+      "rgb(237, 246, 252)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-three",
+      "rgb(168, 210, 216)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-four",
+      "rgb(121, 161, 176)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-five",
+      "rgb(88, 149, 166)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-six",
+      "rgb(47, 95, 110)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-header-dropdown",
+      "rgba(250, 250, 250, 0.1)",
+    );
+    document.documentElement.style.setProperty(
+      "--footer-box-shadow",
+      "0px -10px 10px 0px rgba(121, 161, 176, 0.1)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-drop-down-box-shadow",
+      "rgba(25, 25, 25, 0.2)",
+    );
 
-      const videoElement = document.querySelector(".about > video") as HTMLVideoElement | null;
-      if (videoElement) {
-        videoElement.style.filter = "saturate(20%)";
-      }
-
+    const videoElement = document.querySelector(
+      ".about > video",
+    ) as HTMLVideoElement | null;
+    if (videoElement) {
+      videoElement.style.filter = "saturate(20%)";
+    }
   }
 
   function changeColorsToDark() {
-      document.documentElement.style.setProperty("--color-one", "rgb(5, 5, 4)");
-      document.documentElement.style.setProperty(
-        "--color-two",
-        "rgb(16, 16, 16)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-three",
-        "rgb(77, 75, 67)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-four",
-        "rgb(173, 158, 131)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-five",
-        "rgb(204, 196, 174)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-six",
-        "rgb(255, 232, 117)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-header-dropdown",
-        "rgba(16, 16, 16, 0.1)"
-      );
-      document.documentElement.style.setProperty(
-        "--footer-box-shadow",
-        "0px -10px 10px 0px rgba(77, 75, 67, 0.05)"
-      );
-      document.documentElement.style.setProperty(
-        "--color-drop-down-box-shadow",
-        "rgba(230, 230, 230, 0.2)"
-      );
-    
+    document.documentElement.style.setProperty("--color-one", "rgb(5, 5, 4)");
+    document.documentElement.style.setProperty(
+      "--color-two",
+      "rgb(16, 16, 16)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-three",
+      "rgb(77, 75, 67)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-four",
+      "rgb(173, 158, 131)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-five",
+      "rgb(204, 196, 174)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-six",
+      "rgb(255, 232, 117)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-header-dropdown",
+      "rgba(16, 16, 16, 0.1)",
+    );
+    document.documentElement.style.setProperty(
+      "--footer-box-shadow",
+      "0px -10px 10px 0px rgba(77, 75, 67, 0.05)",
+    );
+    document.documentElement.style.setProperty(
+      "--color-drop-down-box-shadow",
+      "rgba(230, 230, 230, 0.2)",
+    );
   }
 
   if (theme) {
-    fetch('https://api.generlate.com/api/user-data', {
-      method: 'GET',
-      credentials: 'include',
+    fetch("https://api.generlate.com/api/user-data", {
+      method: "GET",
+      credentials: "include",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     })
-      .then(response => response.json())
-      .then(data => {
-        const userColorTheme = data.user_color_theme || 'light';
+      .then((response) => response.json())
+      .then((data) => {
+        const userColorTheme = data.user_color_theme || "light";
 
         setTheme(userColorTheme);
         if (userColorTheme === "dark") {
           changeColorsToDark();
-
         } else {
           changeColorsToLight();
         }
       })
-      .catch(error => {
-        console.error('Error fetching user information:', error);
+      .catch((error) => {
+        console.error("Error fetching user information:", error);
         theme = "light";
       });
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, useTheme } }>
+    <ThemeContext.Provider value={{ theme, useTheme }}>
       <div className={`app ${theme}`}>
-        <Header useTheme={useTheme} theme={theme} name={name} setName={setName}/>
+        <Header
+          useTheme={useTheme}
+          theme={theme}
+          name={name}
+          setName={setName}
+        />
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Home  name={name} setName={setName} theme={theme}/>} />
+            <Route
+              path="/"
+              element={<Home name={name} setName={setName} theme={theme} />}
+            />
             <Route path="/components/About" element={<About theme={theme} />} />
             <Route path="/components/Api" element={<Apis />} />
             <Route
@@ -173,7 +177,10 @@ function App() {
             <Route path="/components/Docs" element={<Docs />} />
             <Route path="/components/Finances" element={<Finances />} />
             <Route path="/components/Legal" element={<Legal />} />
-            <Route path="/components/Login" element={<Login setName={setName}/>} />
+            <Route
+              path="/components/Login"
+              element={<Login setName={setName} />}
+            />
             <Route path="/components/News" element={<News />} />
             <Route path="/components/Pricing" element={<Pricing />} />
             <Route path="/components/Register" element={<Register />} />
@@ -207,5 +214,3 @@ export default App;
 //TODO: refine sub pages
 //TODO: add Auth0 and/or SSO and/or faceid
 //TODO: include a Benefits section and a Use Cases section on About.tsx
-
-

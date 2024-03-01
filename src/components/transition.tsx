@@ -1,8 +1,8 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const transition = (OriginalComponent:any) => {
-  return function WithTransition(props:any) {
+const transition = (OriginalComponent: any) => {
+  return function WithTransition(props: any) {
     return (
       <AnimatePresence>
         <motion.div

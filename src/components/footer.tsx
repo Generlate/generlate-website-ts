@@ -8,17 +8,17 @@ import { BsPeople } from "react-icons/bs";
 export default function Footer() {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const toggleDropdown = (dropdownId:any) => {
+  const toggleDropdown = (dropdownId: any) => {
     setActiveDropdown(activeDropdown === dropdownId ? null : dropdownId);
   };
 
-  const handleMouseEnter = (dropdownId:any) => {
+  const handleMouseEnter = (dropdownId: any) => {
     if (activeDropdown !== dropdownId) {
       toggleDropdown(dropdownId);
     }
   };
 
-  const handleClickOutside = (event:any) => {
+  const handleClickOutside = (event: any) => {
     if (!event.target.closest(".dropdown")) {
       setActiveDropdown(null);
     }

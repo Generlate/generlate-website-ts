@@ -33,13 +33,16 @@ function About({ theme }: ThemeProps) {
     hiddenElements.forEach((el) => observer.observe(el));
 
     const container = containerRef.current;
-    const numberOfSections = container ? (container as HTMLElement).children.length : 0;
+    const numberOfSections = container
+      ? (container as HTMLElement).children.length
+      : 0;
 
     let sectionIndex = 0;
 
     const interval = setInterval(() => {
       if (container) {
-        const scrollPosition = sectionIndex * (container as HTMLElement).clientWidth;
+        const scrollPosition =
+          sectionIndex * (container as HTMLElement).clientWidth;
         (container as HTMLElement).scrollLeft = scrollPosition;
 
         sectionIndex = (sectionIndex + 1) % numberOfSections;
@@ -47,19 +50,21 @@ function About({ theme }: ThemeProps) {
     }, 3000); // Change every 3000 milliseconds (3 seconds)
 
     return () => {
-      clearInterval(interval); 
-      hiddenElements.forEach((el) => observer.unobserve(el)); 
-      observer.disconnect(); 
+      clearInterval(interval);
+      hiddenElements.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
     };
   }, []);
 
   useEffect(() => {
-    const videoElement = document.querySelector(".about > video") as HTMLVideoElement | null;
+    const videoElement = document.querySelector(
+      ".about > video",
+    ) as HTMLVideoElement | null;
     if (videoElement) {
       if (theme === "dark") {
         videoElement.style.filter = "hue-rotate(217deg) saturate(20%)";
       } else {
-        videoElement.style.filter = "saturate(20%)"; 
+        videoElement.style.filter = "saturate(20%)";
       }
     }
   }, [theme]);

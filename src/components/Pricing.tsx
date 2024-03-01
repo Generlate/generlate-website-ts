@@ -1,5 +1,6 @@
 import Footer from "./footer";
 import transition from "./transition";
+import React from "react";
 
 const Pricing = () => {
   return (
