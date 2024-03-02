@@ -12,9 +12,9 @@ const AustenCabret = () => {
           <h4>Founder</h4>
 
           <p>
-            Austen is Generlate's founder and responsible for the company's
-            development, finances, sales and customer support. He alone built
-            the front and back end.{" "}
+            Austen is Generlate&apos;s founder and responsible for the
+            company&apos;s development, finances, sales and customer support. He
+            alone built the front and back end.{" "}
           </p>
           <p>
             {" "}

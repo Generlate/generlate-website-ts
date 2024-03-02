@@ -90,8 +90,8 @@ function About({ theme }: ThemeProps) {
           <ul>
             <li>
               <p>
-                Say goodbye to the grind. Type. don't model. Effortlessly create
-                objects from your text, at the speed of sound.
+                Say goodbye to the grind. Type. don&apos;t model. Effortlessly
+                create objects from your text, at the speed of sound.
               </p>
               <h3>
                 Insanely

@@ -45,9 +45,9 @@ const Legal = () => {
         <section>
           <h2>Intellectual Property Rights</h2>
           <p>
-            All content on Generlate's website, such as text, graphics, logos,
-            and software, is protected by intellectual property laws and is
-            either owned by Generlate or used under license.
+            All content on Generlate&apos;s website, such as text, graphics,
+            logos, and software, is protected by intellectual property laws and
+            is either owned by Generlate or used under license.
           </p>
           <ul>
             <li>

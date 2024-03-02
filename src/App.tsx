@@ -33,6 +33,7 @@ function App() {
     })();
   });
 
+  // eslint-disable-next-line prefer-const
   let [theme, setTheme] = useState("light");
   const useTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
